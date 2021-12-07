@@ -1,0 +1,27 @@
+<!--
+Files needed:
+• CreateUser.html
+• CreateUser.php
+Using HTML forms again, create a simple frontend that allows the user to create a new user to store in the database. A simple text field and submit button will do. When the user submits, the backend should tell the user if the new user was successfully stored in the database.
+The new user should not be stored if:
+• The user left the text field empty
+• The user already exists
+Note: The msqli.query($query) method returns, essentially, false if it does not work.
+(Again, use “mysql.eecs.ku.edu” in place of “database_URL” when you’re connecting to your database.)
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+      <form action="CreatePosts.php" method="post">
+      Username: <br>
+      <input type="text" id="Username" name="user"> <br>
+      Post Content: <br>
+      <input type="text" id="Usermessage" name="usermessage"> <br>
+      <input type="Submit">
+
+      </form>
+        <!-- the content goes here -->
+    </body>
+</html>

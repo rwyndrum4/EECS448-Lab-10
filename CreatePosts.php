@@ -3,11 +3,10 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 $name=$_POST["user"];
-echo $name;
-echo "<br>";
+$postcontent=$_POST["usermessage"];
 
-if($name == ''){
-  echo "Username was empty";
+if($name == '' || $postcontent == ''){
+  echo "Username/Post was empty";
 }
 else{
   $mysqli = new mysqli("mysql.eecs.ku.edu", "r817w969", "oosa7ahV", "r817w969");
@@ -20,17 +19,15 @@ $query = "SELECT * FROM Users";
 
 if($result = $mysqli->query($query)){
   while($row = $result->fetch_assoc()){
-    echo $row["user_id"];
-    echo "<br>";
     if($name == $row["user_id"]){
-      echo "Member already part of the array <br>";
+
+      $adding = "INSERT INTO Posts(author_id, content) VALUES ('$name','$postcontent')";
+      $mysqli->query($adding);
+
+      break;
     }
     else{
-      $adding = "INSERT INTO Users(user_id) VALUES ('$name')";
-      $mysqli->query($adding);
-      echo "<br>";
-      echo $name;
-      echo " was added to the database. <br>";
+      echo "User is not part of the database";
       break;
     }
   }
