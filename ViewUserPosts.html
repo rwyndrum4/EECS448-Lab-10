@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script type="text/javascript" src="indexjs.js"></script>
+				<link href="indexcss.css" rel="stylesheet" type="text/css"/>
+  </head>
+USER_ID:
+<form action="ViewUserPosts.php" method=post>
+<select name="userid" id="user_id">
+<?php
+  $mysqli = new mysqli("mysql.eecs.ku.edu", "r817w969", "oosa7ahV", "r817w969");
+  $query = "SELECT * FROM Users";
+  if($result = $mysqli->query($query)){
+    while($row = $result->fetch_assoc()){
+      echo "<option value='$row[userid]'>" . $row[user_id] . "</option>";
+    }
+  $result->free();
+  $mysqli->close();
+?>
+</select>
+<input type="submit">
+</form>
+</html>
